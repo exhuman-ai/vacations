@@ -1,0 +1,58 @@
+name: Sync vacations from Slack
+
+on:
+  schedule:
+    # Daily at 06:00 UTC.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  # External trigger from a Slack webhook handler:
+  #   curl -X POST -H "Authorization: token <PAT>" \
+  #        -H "Accept: application/vnd.github+json" \
+  #        https://api.github.com/repos/exhuman-ai/vacations/dispatches \
+  #        -d '{"event_type":"slack-vacation"}'
+  repository_dispatch:
+    types: [slack-vacation]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-vacations
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run sync script
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_USER_TOKEN: ${{ secrets.SLACK_USER_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          SLACK_LOOKBACK_DAYS: ${{ vars.SLACK_LOOKBACK_DAYS }}
+        run: node scripts/sync-vacations.mjs
+
+      - name: Commit & push changes
+        run: |
+          set -e
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.js .sync-state.json
+          git commit -m "chore(sync): pull new vacations from Slack" \
+                     -m "Automated update from Slack #vacations channel."
+          git push
