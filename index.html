@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Vacations & Day Offs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%2250%22 font-size=%2256%22>🌴</text></svg>" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div>
+        <h1>Team Vacations &amp; Day Offs</h1>
+        <p>Planned vacations and day offs for 2026, aggregated from team Slack.</p>
+      </div>
+      <div class="legend">
+        <span><span class="swatch vac"></span>Vacation</span>
+        <span><span class="swatch day"></span>Day off</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Team <span id="team-count" style="color:var(--muted);font-size:13px;font-weight:400;margin-left:6px;"></span></h2>
+      <div id="team-grid" class="team-grid"></div>
+    </section>
+
+    <section>
+      <h2>Schedule</h2>
+      <div class="controls">
+        <input id="filter-q" type="search" placeholder="Search name or note…" />
+        <select id="filter-type">
+          <option value="">All types</option>
+          <option value="vacation">Vacation</option>
+          <option value="dayoff">Day off</option>
+        </select>
+        <select id="filter-person"></select>
+        <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;cursor:pointer;">
+          <input id="filter-upcoming" type="checkbox" /> Upcoming only
+        </label>
+        <span class="count" id="vac-count"></span>
+      </div>
+      <div id="timeline"></div>
+    </section>
+
+    <section>
+      <h2>List view</h2>
+      <div id="list" class="list-view"></div>
+    </section>
+
+    <footer>
+      Generated from Slack thread · Source on
+      <a href="https://github.com/exhuman-ai/vacations">GitHub</a>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
