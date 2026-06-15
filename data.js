@@ -95,6 +95,7 @@ window.VACATIONS = [
   { person: "Serhii",     type: "vacation", start: "2026-06-08", end: "2026-06-12", note: "" },
   { person: "Ivan F.",    type: "dayoff",   start: "2026-06-09", end: "2026-06-09", note: "" },
   { person: "Sasha",      type: "dayoff",   start: "2026-06-12", end: "2026-06-12", note: "" },
+  { person: "Serhii",     type: "dayoff",   start: "2026-06-15", end: "2026-06-16", note: "Extra 2 days off" },
   { person: "Ivan M.",    type: "vacation", start: "2026-06-15", end: "2026-06-26", note: "" },
   { person: "Aleksei M.", type: "vacation", start: "2026-06-15", end: "2026-06-28", note: "" },
   { person: "Artem S.",   type: "vacation", start: "2026-06-17", end: "2026-06-24", note: "" },
