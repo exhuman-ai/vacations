@@ -5,7 +5,6 @@
 window.TEAM = [
   { name: "Ivan T.",    role: "Lead",    emoji: "IT" },
   { name: "Artem R.",   role: "Lead",    emoji: "AR" },
-  { name: "Anatoly P.", role: "Backend", emoji: "AP" },
   { name: "Aleksei M.", role: "Team",    emoji: "AM" },
   { name: "Serhii",     role: "Team",    emoji: "S"  },
   { name: "Andrei S.",  role: "Team",    emoji: "AS" },
@@ -21,10 +20,9 @@ window.TEAM = [
   { name: "Artem S.",   role: "Team",    emoji: "AS" },
   { name: "Sasha",      role: "Team",    emoji: "S"  },
   { name: "Slava K.",   role: "Team",    emoji: "SK" },
-  { name: "Renata A.",  role: "Team",    emoji: "RA" },
   { name: "Olya N.",    role: "Team",    emoji: "ON" },
   { name: "Yuri B.",    role: "Team",    emoji: "YB" },
-  { name: "Max",        role: "Team",    emoji: "M"  },
+  { name: "Max Y.",     role: "Team",    emoji: "MY" },
   { name: "Dmitry G.",  role: "Team",    emoji: "DG" },
   { name: "Daniel G.",  role: "Team",    emoji: "DG" },
 ];
@@ -33,7 +31,6 @@ window.TEAM = [
 // start / end are ISO yyyy-mm-dd, inclusive.
 window.VACATIONS = [
   // January
-  { person: "Anatoly P.", type: "dayoff",   start: "2026-01-08", end: "2026-01-09", note: "Kazakhstan, on call" },
   { person: "Ivan T.",    type: "dayoff",   start: "2026-01-15", end: "2026-01-16", note: "Sick" },
   { person: "Ivan M.",    type: "dayoff",   start: "2026-01-30", end: "2026-01-30", note: "Medical" },
 
@@ -50,9 +47,7 @@ window.VACATIONS = [
   { person: "Sasha Z.",   type: "vacation", start: "2026-02-23", end: "2026-02-27", note: "Israel" },
 
   // March
-  { person: "Renata A.",  type: "dayoff",   start: "2026-03-04", end: "2026-03-04", note: "Conference" },
   { person: "Serhii",     type: "dayoff",   start: "2026-03-09", end: "2026-03-09", note: "" },
-  { person: "Anatoly P.", type: "dayoff",   start: "2026-03-09", end: "2026-03-09", note: "" },
   { person: "Andrei S.",  type: "vacation", start: "2026-03-25", end: "2026-03-27", note: "" },
   { person: "Sasha Z.",   type: "vacation", start: "2026-03-30", end: "2026-04-13", note: "Japan" },
 
@@ -64,12 +59,10 @@ window.VACATIONS = [
   { person: "Olya N.",    type: "dayoff",   start: "2026-04-06", end: "2026-04-07", note: "Birthday" },
   { person: "Ivan F.",    type: "dayoff",   start: "2026-04-06", end: "2026-04-06", note: "" },
   { person: "Ivan F.",    type: "dayoff",   start: "2026-04-10", end: "2026-04-10", note: "" },
-  { person: "Max",        type: "dayoff",   start: "2026-04-13", end: "2026-04-14", note: "" },
-  { person: "Anatoly P.", type: "dayoff",   start: "2026-04-15", end: "2026-04-15", note: "" },
-  { person: "Max",        type: "dayoff",   start: "2026-04-21", end: "2026-04-21", note: "" },
+  { person: "Max Y.",     type: "dayoff",   start: "2026-04-13", end: "2026-04-14", note: "" },
+  { person: "Max Y.",     type: "dayoff",   start: "2026-04-21", end: "2026-04-21", note: "" },
   { person: "Dmitry G.",  type: "dayoff",   start: "2026-04-21", end: "2026-04-21", note: "Flight" },
   { person: "Serhii",     type: "dayoff",   start: "2026-04-24", end: "2026-04-24", note: "" },
-  { person: "Anatoly P.", type: "vacation", start: "2026-04-27", end: "2026-05-04", note: "" },
   { person: "Daniel G.",  type: "vacation", start: "2026-04-27", end: "2026-05-04", note: "" },
   { person: "Dmitry G.",  type: "dayoff",   start: "2026-04-28", end: "2026-04-28", note: "Flight" },
   { person: "Slava K.",   type: "dayoff",   start: "2026-04-29", end: "2026-04-29", note: "" },
@@ -77,7 +70,7 @@ window.VACATIONS = [
 
   // May
   { person: "Igor R.",    type: "dayoff",   start: "2026-05-05", end: "2026-05-06", note: "" },
-  { person: "Max",        type: "dayoff",   start: "2026-05-05", end: "2026-05-05", note: "Forced" },
+  { person: "Max Y.",     type: "dayoff",   start: "2026-05-05", end: "2026-05-05", note: "Forced" },
   { person: "Nikolai B.", type: "vacation", start: "2026-05-13", end: "2026-05-15", note: "" },
   { person: "Ivan F.",    type: "vacation", start: "2026-05-14", end: "2026-05-17", note: "" },
   { person: "Dmitry G.",  type: "dayoff",   start: "2026-05-14", end: "2026-05-15", note: "Flight" },
@@ -91,7 +84,7 @@ window.VACATIONS = [
   // June
   { person: "Yuri B.",    type: "dayoff",   start: "2026-06-04", end: "2026-06-05", note: "" },
   { person: "Slava K.",   type: "dayoff",   start: "2026-06-04", end: "2026-06-05", note: "" },
-  { person: "Max",        type: "vacation", start: "2026-06-08", end: "2026-06-19", note: "" },
+  { person: "Max Y.",     type: "vacation", start: "2026-06-08", end: "2026-06-19", note: "" },
   { person: "Serhii",     type: "vacation", start: "2026-06-08", end: "2026-06-12", note: "" },
   { person: "Ivan F.",    type: "dayoff",   start: "2026-06-09", end: "2026-06-09", note: "" },
   { person: "Sasha",      type: "dayoff",   start: "2026-06-12", end: "2026-06-12", note: "" },

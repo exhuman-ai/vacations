@@ -4,6 +4,8 @@
     (a, b) => a.start.localeCompare(b.start) || a.person.localeCompare(b.person)
   );
 
+  let didInitialScroll = false;
+
   const MONTHS_RU = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",
@@ -149,12 +151,12 @@
 
     wrap.innerHTML = `
       <div class="timeline-wrap">
-        <div class="timeline" style="grid-template-columns:180px ${gridW}px;">
+        <div class="timeline">
           <div class="tl-side">
             <div class="tl-header-row">Team member</div>
             ${sideRows}
           </div>
-          <div class="tl-main">
+          <div class="tl-main" style="width:${gridW}px;">
             <div class="tl-header-row" style="width:${gridW}px;">
               <div class="tl-months">${monthsHtml}</div>
             </div>
@@ -167,6 +169,31 @@
         </div>
       </div>
     `;
+
+    // Auto-scroll horizontally to the current month on first render so the
+    // user lands on a forward-looking view instead of January. Skip on
+    // subsequent re-renders (filter changes) to avoid yanking the viewport.
+    const tlWrap = wrap.querySelector(".timeline-wrap");
+    if (tlWrap && !didInitialScroll) {
+      let scrollTargetDate;
+      if (todayUtc >= start && todayUtc <= end) {
+        scrollTargetDate = new Date(
+          Date.UTC(todayUtc.getUTCFullYear(), todayUtc.getUTCMonth(), 1)
+        );
+      } else if (todayUtc < start) {
+        scrollTargetDate = start;
+      } else {
+        scrollTargetDate = new Date(
+          Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), 1)
+        );
+      }
+      const offsetDays = diffDays(start, scrollTargetDate);
+      const targetLeft = Math.max(0, offsetDays * dayW - 24);
+      requestAnimationFrame(() => {
+        tlWrap.scrollLeft = targetLeft;
+      });
+      didInitialScroll = true;
+    }
   }
 
   /* ===== List view ===== */

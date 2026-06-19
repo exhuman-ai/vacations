@@ -157,15 +157,18 @@ section h2 {
 /* ===== Timeline ===== */
 .timeline-wrap {
   overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--panel-2);
+  -webkit-overflow-scrolling: touch;
 }
 
 .timeline {
   position: relative;
-  display: grid;
-  grid-template-columns: 180px 1fr;
+  display: flex;
+  align-items: stretch;
+  min-width: max-content;
 }
 
 .tl-side, .tl-main {
@@ -173,11 +176,18 @@ section h2 {
 }
 
 .tl-side {
+  flex: 0 0 180px;
+  width: 180px;
   border-right: 1px solid var(--border);
   background: var(--panel-2);
   position: sticky;
   left: 0;
-  z-index: 2;
+  z-index: 4;
+  box-shadow: 1px 0 0 var(--border), 6px 0 12px -6px rgba(0, 0, 0, 0.55);
+}
+
+.tl-main {
+  flex: 0 0 auto;
 }
 
 .tl-header-row {
